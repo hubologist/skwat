@@ -8,11 +8,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" id="logo" href="{{ URL::route('home') }}">Skwat</a>
+            <a class="navbar-brand" id="logo" href="{{URL::route('home')}}">Skwat</a>
             <ul class="nav navbar-nav">
+                @if(Auth::check())
                 <li>
                     <a href="">Hello, user!</a>
                 </li>
+                @endif
             </ul>
         </div>
 
@@ -37,7 +39,7 @@
                     <a href="index.php?page=login">Login</a>
                 </li>
                 <li>
-                    <a href="{{ URL::route('account-create') }}">Register</a>
+                    <a href="{{URL::route('account-create')}}">Register</a>
                 </li>                
                 @endif
             </ul>

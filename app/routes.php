@@ -16,23 +16,24 @@ Route::get('/', array(
 ));
 
 // Unauthenticated group
-
 Route::group(array('before' => 'guest'), function() {
     // CSRF protection group
-
     Route::group(array('before' => 'csrf'), function() {
         // Create account (POST)
-
-        Route::get('/account/create', array(
+        Route::post('/account/create', array(
             'as' => 'account-create-post',
             'uses' => 'accountController@postCreate'
         ));
     });
-
     // Create account (GET)
-
     Route::get('/account/create', array(
         'as' => 'account-create',
         'uses' => 'accountController@getCreate'
+    ));
+    
+    // Activate account (GET)    
+    Route::get('/account/activate/{code}', array(
+        'as' => 'account-activate',
+        'uses' => 'accountController@getActivate'
     ));
 });

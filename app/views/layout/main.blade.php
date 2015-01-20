@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Meta tags -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +27,23 @@
     <body>
         @include('layout.navbar')
         <div class='container'>
-        @yield('content')            
+            @if(Session::has('danger'))
+            <div class='alert alert-danger'>
+                <p>{{Session::get('danger')}}</p>
+            </div>
+            @endif
+            @if(Session::has('warning'))
+            <div class='alert alert-warning'>
+                <p>{{Session::get('warning')}}</p>
+            </div>
+            @endif
+            @if(Session::has('success'))
+            <div class='alert alert-success'>
+                <p>{{Session::get('success')}}</p>
+            </div>
+            @endif
+
+            @yield('content')            
         </div>
 
         <!-- 

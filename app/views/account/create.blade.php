@@ -1,33 +1,47 @@
 @extends('layout.main')
 
 @section('content')
+@if($errors->has('name') || $errors->has('email') || $errors->has('password'))
+<div class="alert alert-danger">
+    @if($errors->has('name'))
+        <p>{{$errors->first('name')}}</p>
+    @endif
+    @if($errors->has('email'))
+        <p>{{$errors->first('email')}}</p>
+    @endif
+    @if($errors->has('password'))
+        <p>{{$errors->first('password')}}</p>
+    @endif
+</div>
+@endif
 <div class='panel'>
     <form action="{{URL::route('account-create-post')}}" class="form-signin" method="post" role="form">
         <h3 class="form-signin-heading">Create new account</h3>
-
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <label for="user_name" class="sr-only">Name</label>
-                    <input type="text" name="user_name" id="user_name" class="form-control input-sm" placeholder="Your Name" value="" required>
+                    <div class="field">
+                        <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Your Name" value="{{(Input::old('name')?Input::old('name'):'')}}" required>
+                    </div>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <label for="user_email" class="sr-only">Email address</label>
-                    <input type="email" name="user_email" id="user_email" class="form-control input-sm" placeholder="Email address" value="" required>
-
-                    <label for="user_password" class="sr-only">Password</label>
-                    <input type="password" name="user_password" id="user_password" class="form-control input-sm" placeholder="Password" required>
+                    <div class="field">
+                        <label for="email" class="sr-only">Email address</label>
+                        <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email address" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
+                    </div>
+                    <div class="field">
+                        <label for="password" class="sr-only">Password</label>
+                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
+                    </div>
                 </div>
             </div>
         </div>
-
         <input class="btn btn-lg btn-danger btn-block" type="submit" value="Create">
+        {{Form::token()}}
     </form>    
 </div>
-
 @stop
