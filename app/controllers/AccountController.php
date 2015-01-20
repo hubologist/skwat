@@ -30,7 +30,7 @@ class AccountController extends BaseController {
         {
             // Create an acount
             $email = Input::get('email');
-            $username = Input::get('username');
+            $name = Input::get('name');
             $password = Input::get('password');
 
             // Activation code
@@ -38,7 +38,7 @@ class AccountController extends BaseController {
             $user = User::create(array(
                         'active' => 0,
                         'email' => $email,
-                        'username' => $username,
+                        'username' => $name,
                         'password' => Hash::make($password),
                         'code' => $code
             ));
@@ -48,7 +48,7 @@ class AccountController extends BaseController {
                 //Send the activation link
                 Mail::send('emails.auth.activate', array(
                     'link' => URL::route('account-activate', $code),
-                    'username' => $username
+                    'name' => $name
                         ), function($message) use($user) {
                     $message
                             ->to($user->email, $user->username)
