@@ -65,24 +65,22 @@ class AccountController extends BaseController {
     {
         // Find user whose code corresponds to the one we've previously sent through email
         $user = User::where('code', '=', $code)->where('active', '=', 0);
-        
-        if($user->count()) {
+
+        if ($user->count())
+        {
             //I don't quite get this first thing
             $user = $user->first();
-            
-            print_r($user);
-            
-            /* Update to active state
+
             $user->active = 1;
             $user->code = '';
-            
-            if($user->save()) {
-                return Redirect::route('home')
-                        ->with('success', 'Your account has been activated! Please login to start using Skwat.');
-            }*/
+
+            echo '<pre>', print_r($user), '<pre>';
+            if ($user->update())
+            {
+                echo '-----------------------';
+                echo '<pre>', print_r($user), '<pre>';
+            }
         }
-        
-        return Redirect::route('home')
-                ->with('danger', 'Something went wrong with your activation. Please try again later.');
     }
+
 }
