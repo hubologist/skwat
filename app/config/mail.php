@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.gmail.com',
+	'host' => 'smtp.ipage.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'vf.tiago@gmail.com', 'name' => 'Auth'),
+	'from' => array('address' => 'noreply@lightradius.com', 'name' => 'Skwat'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'vf.tiago@gmail.com',
+	'username' => 'noreply@lightradius.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'cvbczxczxcvbu',
+	'password' => '11!',
 
 	/*
 	|--------------------------------------------------------------------------
