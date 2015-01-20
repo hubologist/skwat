@@ -73,12 +73,14 @@ class AccountController extends BaseController {
             $user->active = 1;
             $user->code = '';
 
-            echo '<pre>', print_r($user), '<pre>';
             if ($user->save())
             {
-                echo '-----------------------';
-                echo '<pre>', print_r($user), '<pre>';
+                return Redirect::route('home')
+                                ->with('success', 'Your account has been successfully activated! Please login to start using Skwat.');
+
             }
         }
+        return Redirect::route('home')
+                ->with('danger', 'There was a problem activating your account. Please try again later.');      
     }
 }
