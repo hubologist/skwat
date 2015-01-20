@@ -45,7 +45,7 @@ class AccountController extends BaseController {
 
             if ($user)
             {
-                //Send the activation link
+                // Send the activation link
                 Mail::send('emails.auth.activate', array(
                     'link' => URL::route('account-activate', $code),
                     'name' => $name
@@ -68,19 +68,17 @@ class AccountController extends BaseController {
 
         if ($user->count())
         {
-            //I don't quite get this first thing
             $user = $user->first();
 
             $user->active = 1;
             $user->code = '';
 
             echo '<pre>', print_r($user), '<pre>';
-            if ($user->update())
+            if ($user->save())
             {
                 echo '-----------------------';
                 echo '<pre>', print_r($user), '<pre>';
             }
         }
     }
-
 }
