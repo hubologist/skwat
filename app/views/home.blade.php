@@ -8,21 +8,21 @@
     <a href="{{URL::route('account-create')}}" class="btn btn-danger">Create new account</a>
 </div>
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-body">
                 Create an account in seconds.
             </div>
         </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-body">
                 Add a new entry.
             </div>
         </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-body">
                 Easy to visualize information.
