@@ -213,7 +213,7 @@ class AccountController extends BaseController {
                 {
                     // This means the user code has been successfully updated
                     Mail::send('emails.auth.recover', array(
-                        'link' => URL::route('account-recovery', $code),
+                        'link' => URL::route('account-reactivate', $code),
                         'name' => $user->name,
                         'password' => $password
                             ), function($message) use($user) {
@@ -221,11 +221,37 @@ class AccountController extends BaseController {
                                 ->to($user->email, $user->name)
                                 ->subject('Skwat | Your new password');
                     });
+
+                    return Redirect::route('home')
+                                    ->with('warning', 'We have sent you a new password by email.');
                 }
             }
         }
         return Redirect::route('account-recovery')
                         ->with('danger', 'Your account could not be recovered!');
+    }
+
+    public function getReactivate($code)
+    {
+        $user = User::where('code', '=', $code)
+                ->where('password_temp', '!=', '');
+
+        if ($user->count())
+        {
+            $user = $user->first();
+
+            $user->password = $user->password_temp;
+            $user->password_temp = '';
+            $user->code = '';
+
+            if ($user->save())
+            {
+                return Redirect::route('home')
+                                ->with('success', 'Your account has been reactivated, please login with your new password. You will be able to change it later.');
+            }
+        }
+        return Redirect::route('home')
+                        ->with('danger', 'Your account could not be reactivated.');
     }
 
 }

@@ -90,9 +90,15 @@ Route::group(array('before' => 'guest'), function() {
         'uses' => 'AccountController@getActivate'
     ));
     
-    // Recover account (GET)    
+    // Recover password (GET)    
     Route::get('/account/recovery', array(
         'as' => 'account-recovery',
         'uses' => 'AccountController@getRecovery'
+    ));
+    
+    // Reactivate account (GET)    
+    Route::get('/account/reactivate/{code}', array(
+        'as' => 'account-reactivate',
+        'uses' => 'AccountController@getReactivate'
     ));
 });
