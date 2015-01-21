@@ -1,8 +1,21 @@
 @extends('layout.main')
 
 @section('content')
+@if($errors->has('oldpassword') || $errors->has('newpassword') || $errors->has('confirmpassword'))
+<div class="alert alert-danger">
+    @if($errors->has('oldpassword'))
+    <p>{{$errors->first('oldpassword')}}</p>
+    @endif
+    @if($errors->has('newpassword'))
+    <p>{{$errors->first('newpassword')}}</p>
+    @endif
+    @if($errors->has('confirmpassword'))
+    <p>Your passwords must match.</p>
+    @endif
+</div>
+@endif
 <div class='panel'>
-    <form action="{{URL::route('account-login-post')}}" class="form-signin" method="post" role="form">
+    <form action="{{URL::route('account-change-password-post')}}" class="form-signin" method="post" role="form">
         <h3 class="form-signin-heading">Change Password</h3>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">

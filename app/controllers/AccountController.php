@@ -10,10 +10,45 @@ class AccountController extends BaseController {
     {
         return View::make('account.change-password');
     }
-    
-    public function getLogin()
+
+    public function postChangePassword()
     {
-        return View::make('account.login');
+        $validator = Validator::make(Input::all(), array(
+                    'oldpassword' => 'required|max:64|min:6',
+                    'newpassword' => 'required|max:64|min:6',
+                    'confirmpassword' => 'same:newpassword'
+        ));
+
+        if ($validator->fails())
+        {
+            // Return to form page with proper error messages
+            return Redirect::route('account-change-password')
+                            ->withErrors($validator);
+        }
+        else
+        {
+            // Change the user's password
+            $user = User::find(Auth::user()->id);
+
+            $oldpassword = Input::get('oldpassword');
+            $newpassword = Input::get('newpassword');
+
+            if (Hash::check($oldpassword, $user->getAuthPassword()))
+            {
+                // If the password matches, update the password field
+                $user->password = Hash::make($newpassword);
+
+                if ($user->save())
+                {
+                    return Redirect::route('home')
+                                    ->with('success', 'Your password has been successfully changed!');
+                }
+            }
+            return Redirect::route('home')
+                            ->with('danger', 'Your current password is incorrect.');
+        }
+        return Redirect::route('home')
+                        ->with('danger', 'Your password could not be changed.');
     }
 
     public function getLogout()
@@ -21,6 +56,11 @@ class AccountController extends BaseController {
         Auth::logout();
         return Redirect::route('home')
                         ->with('success', 'You\'re now logged out. See you!');
+    }
+
+    public function getLogin()
+    {
+        return View::make('account.login');
     }
 
     public function postLogin()
