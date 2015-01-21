@@ -12,7 +12,7 @@
             <ul class="nav navbar-nav">
                 @if(Auth::check())
                 <li>
-                    <a>Hello, !</a>
+                    <a>Hello, {{Auth::user()->name}}!</a>
                 </li>
                 @endif
             </ul>
@@ -26,7 +26,7 @@
                     <a href="index.php?page=newentry">New Entry</a>
                 </li>
                 <li>
-                    <a href="{{URL::route('profile', $user->name)}}">Profile</a>
+                    <a href="{{URL::route('profile', Auth::user()->name)}}">Profile</a>
                 </li>
                 <li>
                     <a href="index.php?page=settings">Settings</a>
