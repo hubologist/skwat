@@ -6,6 +6,16 @@
 
 class AccountController extends BaseController {
 
+    public function getLogin()
+    {
+        return View::make('account.login');
+    }
+    
+    public function postLogin()
+    {
+        return View::make('account.login');
+    }
+
     public function getCreate()
     {
         return View::make('account.create');

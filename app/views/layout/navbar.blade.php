@@ -36,7 +36,7 @@
                 </li>                
                 @else
                 <li>
-                    <a href="index.php?page=login">Login</a>
+                    <a href="{{URL::route('account-login')}}">Login</a>
                 </li>
                 <li>
                     <a href="{{URL::route('account-create')}}">Register</a>

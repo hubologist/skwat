@@ -4,7 +4,7 @@
 <div class="jumbotron" id="bimbotron">
     <h1>Skwat</h1>
     <h3>The free web app that makes it dead simple to measure your progress in the gym.</h3>
-    <p>Please login or create a new account to get started.</p>
+    <p>Please <a href="{{URL::route('account-login')}}">login</a> or create a new account to get started.</p>
     <a href="{{URL::route('account-create')}}" class="btn btn-danger">Create new account</a>
 </div>
 <div class="row">
