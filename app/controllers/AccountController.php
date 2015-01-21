@@ -6,6 +6,11 @@
 
 class AccountController extends BaseController {
 
+    public function getChangePassword()
+    {
+        return View::make('account.change-password');
+    }
+    
     public function getLogin()
     {
         return View::make('account.login');
