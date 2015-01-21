@@ -4,10 +4,10 @@
 @if($errors->has('email') || $errors->has('password'))
 <div class="alert alert-danger">
     @if($errors->has('email'))
-        <p>{{$errors->first('email')}}</p>
+    <p>{{$errors->first('email')}}</p>
     @endif
     @if($errors->has('password'))
-        <p>{{$errors->first('password')}}</p>
+    <p>{{$errors->first('password')}}</p>
     @endif
 </div>
 @endif
@@ -24,6 +24,11 @@
                     <div class="field">
                         <label for="password" class="sr-only">Password</label>
                         <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember"> Remember me
+                        </label>
                     </div>
                 </div>
             </div>

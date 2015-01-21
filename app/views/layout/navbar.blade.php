@@ -32,7 +32,10 @@
                     <a href="index.php?page=settings">Settings</a>
                 </li>
                 <li>
-                    <a href="index.php?page=logout">Logout</a>
+                    <a href="{{URL::route('account-logout')}}">Change Password</a>
+                </li>                
+                <li>
+                    <a href="{{URL::route('account-logout')}}">Logout</a>
                 </li>                
                 @else
                 <li>

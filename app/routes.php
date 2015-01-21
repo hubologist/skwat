@@ -15,6 +15,16 @@ Route::get('/', array(
     'uses' => 'homeController@home'
 ));
 
+// Authenticated group
+Route::group(array('before' => 'auth'), function() {
+    
+    // Logout (GET)    
+    Route::get('/account/logout', array(
+        'as' => 'account-logout',
+        'uses' => 'accountController@getLogout'
+    ));    
+});
+
 // Unauthenticated group
 Route::group(array('before' => 'guest'), function() {
     

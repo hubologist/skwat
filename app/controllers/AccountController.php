@@ -10,14 +10,18 @@ class AccountController extends BaseController {
     {
         return View::make('account.login');
     }
-    
+
+    public function getLogout()
+    {
+        Auth::logout();
+        return Redirect::route('home')
+                        ->with('success', 'You\'re now logged out. See you!');
+    }
+
     public function postLogin()
     {
-        $validator = Validator::make(Input::all(), array(
-            'email' => 'required|max:64|min:3|email',
-            'password' => 'required|max:64|min:6'
+        $validator = Validator::make(Input::all(), array('email' => 'required|max:64|min:3|email', 'password' => 'required|max:64|min:6'
         ));
-        
         if ($validator->fails())
         {
             // Return to form page with proper error messages
@@ -28,18 +32,26 @@ class AccountController extends BaseController {
         else
         {
             // Login user
-            $email = Input::get('email');
-            $password = Input::get('password');
+            $remember = (Input::has('remember')) ? true : false;
 
-            if ($user)
+            $auth = Auth::attempt(array(
+                        'email' => Input::get('email'),
+                        'password' => Input::get('password'),
+                        'active' => 1
+                            ), $remember);
+
+            if ($auth)
             {
-
-                return Redirect::route('home')
-                                ->with('success', 'You are now logged in!');
+                // Redirect to intended page
+                return Redirect::intended('/')->with('success', 'You are now logged in!');
             }
-        }        
-        
-        return View::make('account.login');
+            else
+            {
+                return Redirect::route('account-login')->with('danger', 'Wrong email/password combination or account not activated.');
+            }
+        }
+        return Redirect::route('account-login')
+                        ->with('danger', 'There was a problem logging you in. Please contact support.');
     }
 
     public function getCreate()
@@ -113,10 +125,10 @@ class AccountController extends BaseController {
             {
                 return Redirect::route('home')
                                 ->with('success', 'Your account has been successfully activated! Please login to start using Skwat.');
-
             }
         }
         return Redirect::route('home')
-                ->with('danger', 'There was a problem activating your account. Please try again later.');      
+                        ->with('danger', 'There was a problem activating your account. Please try again later.');
     }
+
 }
