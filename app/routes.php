@@ -10,9 +10,15 @@
   |
  */
 
+// All
 Route::get('/', array(
     'as' => 'home',
-    'uses' => 'homeController@home'
+    'uses' => 'HomeController@home'
+));
+
+Route::get('/user/{name}', array(
+    'as' => 'profile',
+    'uses' => 'ProfileController@user'
 ));
 
 // Authenticated group
@@ -24,20 +30,20 @@ Route::group(array('before' => 'auth'), function() {
         // Change password (POST)
         Route::post('/account/change-password', array(
             'as' => 'account-change-password-post',
-            'uses' => 'accountController@postChangePassword'
+            'uses' => 'AccountController@postChangePassword'
         ));
     });    
     
     // Change password (GET)    
     Route::get('/account/change-password', array(
         'as' => 'account-change-password',
-        'uses' => 'accountController@getChangePassword'
+        'uses' => 'AccountController@getChangePassword'
     ));    
     
     // Logout (GET)    
     Route::get('/account/logout', array(
         'as' => 'account-logout',
-        'uses' => 'accountController@getLogout'
+        'uses' => 'AccountController@getLogout'
     ));    
 });
 
@@ -50,31 +56,43 @@ Route::group(array('before' => 'guest'), function() {
         // Login (POST)
         Route::post('/account/login', array(
             'as' => 'account-login-post',
-            'uses' => 'accountController@postLogin'
+            'uses' => 'AccountController@postLogin'
         ));
         
         // Create account (POST)
         Route::post('/account/create', array(
             'as' => 'account-create-post',
-            'uses' => 'accountController@postCreate'
+            'uses' => 'AccountController@postCreate'
+        ));
+        
+        // Recover account (POST)
+        Route::post('/account/recovery', array(
+            'as' => 'account-recovery-post',
+            'uses' => 'AccountController@postRecovery'
         ));
     });
     
     // Login (GET)
     Route::get('/account/login', array(
         'as' => 'account-login',
-        'uses' => 'accountController@getLogin'
+        'uses' => 'AccountController@getLogin'
     ));
     
     // Create account (GET)
     Route::get('/account/create', array(
         'as' => 'account-create',
-        'uses' => 'accountController@getCreate'
+        'uses' => 'AccountController@getCreate'
     ));
     
     // Activate account (GET)    
     Route::get('/account/activate/{code}', array(
         'as' => 'account-activate',
-        'uses' => 'accountController@getActivate'
+        'uses' => 'AccountController@getActivate'
+    ));
+    
+    // Recover account (GET)    
+    Route::get('/account/recovery', array(
+        'as' => 'account-recovery',
+        'uses' => 'AccountController@getRecovery'
     ));
 });

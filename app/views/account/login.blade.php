@@ -34,6 +34,7 @@
             </div>
         </div>
         <input class="btn btn-lg btn-danger btn-block" type="submit" value="Login">
+        <p class="text-center"><a class="text-center" href="{{URL::route('account-recovery')}}">Forgot password</a></p>
         {{Form::token()}}
     </form>    
 </div>

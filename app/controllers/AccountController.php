@@ -131,7 +131,7 @@ class AccountController extends BaseController {
             $user = User::create(array(
                         'active' => 0,
                         'email' => $email,
-                        'username' => $name,
+                        'name' => $name,
                         'password' => Hash::make($password),
                         'code' => $code
             ));
@@ -144,7 +144,7 @@ class AccountController extends BaseController {
                     'name' => $name
                         ), function($message) use($user) {
                     $message
-                            ->to($user->email, $user->username)
+                            ->to($user->email, $user->name)
                             ->subject('Skwat | Activate your new account');
                 });
 
@@ -174,6 +174,58 @@ class AccountController extends BaseController {
         }
         return Redirect::route('home')
                         ->with('danger', 'There was a problem activating your account. Please try again later.');
+    }
+
+    public function getRecovery()
+    {
+        return View::make('account.recovery');
+    }
+
+    public function postRecovery()
+    {
+        $validator = Validator::make(Input::all(), array(
+                    'email' => 'required|email'
+        ));
+
+        if ($validator->fails())
+        {
+            return Redirect::route('account-recovery')
+                            ->withErrors($validator)
+                            ->withInput();
+        }
+        else
+        {
+            // Change the users password and send it via email
+            $user = User::where('email', '=', Input::get('email'));
+
+            if ($user->count())
+            {
+                $user = $user->first();
+
+                // Generate new code and password for the user
+                $code = str_random(64);
+                $password = str_random(8);
+
+                $user->code = $code;
+                $user->password_temp = Hash::make($password);
+
+                if ($user->save())
+                {
+                    // This means the user code has been successfully updated
+                    Mail::send('emails.auth.recover', array(
+                        'link' => URL::route('account-recovery', $code),
+                        'name' => $user->name,
+                        'password' => $password
+                            ), function($message) use($user) {
+                        $message
+                                ->to($user->email, $user->name)
+                                ->subject('Skwat | Your new password');
+                    });
+                }
+            }
+        }
+        return Redirect::route('account-recovery')
+                        ->with('danger', 'Your account could not be recovered!');
     }
 
 }
