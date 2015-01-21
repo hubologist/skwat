@@ -1,13 +1,13 @@
 @extends('layout.main')
 
 @section('content')
-@if($errors->has('oldpassword') || $errors->has('newpassword') || $errors->has('confirmpassword'))
+@if($errors->has('oldpassword') || $errors->has('password') || $errors->has('confirmpassword'))
 <div class="alert alert-danger">
     @if($errors->has('oldpassword'))
-    <p>{{$errors->first('oldpassword')}}</p>
+    <p>Your current password is incorrect.</p>
     @endif
-    @if($errors->has('newpassword'))
-    <p>{{$errors->first('newpassword')}}</p>
+    @if($errors->has('password'))
+    <p>{{$errors->first('password')}}</p>
     @endif
     @if($errors->has('confirmpassword'))
     <p>Your passwords must match.</p>
@@ -29,8 +29,8 @@
                 <p>Choose a new password</p>
                 <div class="form-group">
                     <div class="field">
-                        <label for="newpassword" class="sr-only">New Password</label>
-                        <input type="password" name="newpassword" id="newpassword" class="form-control input-sm" placeholder="New Password" required>
+                        <label for="password" class="sr-only">New Password</label>
+                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="New Password" required>
                     </div>
                     <div class="field">
                         <label for="confirmpassword" class="sr-only">Confirm Password</label>

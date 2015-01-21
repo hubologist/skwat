@@ -15,8 +15,8 @@ class AccountController extends BaseController {
     {
         $validator = Validator::make(Input::all(), array(
                     'oldpassword' => 'required|max:64|min:6',
-                    'newpassword' => 'required|max:64|min:6',
-                    'confirmpassword' => 'same:newpassword'
+                    'password' => 'required|max:64|min:6',
+                    'confirmpassword' => 'same:password'
         ));
 
         if ($validator->fails())
@@ -31,7 +31,7 @@ class AccountController extends BaseController {
             $user = User::find(Auth::user()->id);
 
             $oldpassword = Input::get('oldpassword');
-            $newpassword = Input::get('newpassword');
+            $newpassword = Input::get('password');
 
             if (Hash::check($oldpassword, $user->getAuthPassword()))
             {
