@@ -12,7 +12,7 @@
             <ul class="nav navbar-nav">
                 @if(Auth::check())
                 <li>
-                    <a>Hello, {{$user->name}}!</a>
+                    <a>Hello, !</a>
                 </li>
                 @endif
             </ul>
