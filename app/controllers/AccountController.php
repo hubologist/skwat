@@ -13,6 +13,32 @@ class AccountController extends BaseController {
     
     public function postLogin()
     {
+        $validator = Validator::make(Input::all(), array(
+            'email' => 'required|max:64|min:3|email',
+            'password' => 'required|max:64|min:6'
+        ));
+        
+        if ($validator->fails())
+        {
+            // Return to form page with proper error messages
+            return Redirect::route('account-login')
+                            ->withErrors($validator)
+                            ->withInput();
+        }
+        else
+        {
+            // Login user
+            $email = Input::get('email');
+            $password = Input::get('password');
+
+            if ($user)
+            {
+
+                return Redirect::route('home')
+                                ->with('success', 'You are now logged in!');
+            }
+        }        
+        
         return View::make('account.login');
     }
 

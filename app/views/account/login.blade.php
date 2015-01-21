@@ -12,7 +12,7 @@
 </div>
 @endif
 <div class='panel'>
-    <form action="{{URL::route('account-create-post')}}" class="form-signin" method="post" role="form">
+    <form action="{{URL::route('account-login-post')}}" class="form-signin" method="post" role="form">
         <h3 class="form-signin-heading">Login</h3>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <input class="btn btn-lg btn-danger btn-block" type="submit" value="Create">
+        <input class="btn btn-lg btn-danger btn-block" type="submit" value="Login">
         {{Form::token()}}
     </form>    
 </div>
