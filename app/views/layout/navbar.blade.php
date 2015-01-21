@@ -26,7 +26,7 @@
                     <a href="index.php?page=newentry">New Entry</a>
                 </li>
                 <li>
-                    <a href="index.php?page=profile">Profile</a>
+                    <a href="{{URL::route('profile', $user->name)}}">Profile</a>
                 </li>
                 <li>
                     <a href="index.php?page=settings">Settings</a>
