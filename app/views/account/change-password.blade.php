@@ -6,12 +6,14 @@
         <h3 class="form-signin-heading">Change Password</h3>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
+                <p>Insert your current password</p>
                 <div class="form-group">
                     <div class="field">
                         <label for="oldpassword" class="sr-only">Old Password</label>
                         <input type="password" name="oldpassword" id="oldpassword" class="form-control input-sm" placeholder="Old Password" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
                     </div>
                 </div>
+                <p>Choose a new password</p>
                 <div class="form-group">
                     <div class="field">
                         <label for="newpassword" class="sr-only">New Password</label>
