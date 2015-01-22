@@ -11,6 +11,16 @@ class AccountController extends BaseController {
         return View::make('account.change-password');
     }
 
+    public function getSettings()
+    {
+        return View::make('account.settings');
+    }
+    
+    public function getNew()
+    {
+        return View::make('account.new');
+    }
+
     public function postChangePassword()
     {
         $validator = Validator::make(Input::all(), array(

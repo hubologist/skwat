@@ -34,6 +34,18 @@ Route::group(array('before' => 'auth'), function() {
         ));
     });    
     
+    // New Entry (GET)    
+    Route::get('/account/new', array(
+        'as' => 'account-new',
+        'uses' => 'AccountController@getNew'
+    ));    
+    
+    // Settings (GET)    
+    Route::get('/account/settings', array(
+        'as' => 'account-settings',
+        'uses' => 'AccountController@getSettings'
+    ));    
+    
     // Change password (GET)    
     Route::get('/account/change-password', array(
         'as' => 'account-change-password',

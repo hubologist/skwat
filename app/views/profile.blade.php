@@ -14,11 +14,19 @@
         <h3>Workout history</h3>
     </div>
 </div>
-@foreach ($workouts as $workout)
+@foreach($workouts as $workout)
 <div class="panel panel-default">
     <div class="panel-body">
         <h4>{{date("d-M", strtotime($workout->date))}}</h4>
-        <strong>{{$workout->weight}}{{$user->pref_units}}</strong>
+        <strong>
+            {{$workout->weight}}
+            @if($user->pref_units == 0)
+            kg
+            @else
+            lbs
+            @endif
+            {{$workout->sets}}x{{$workout->reps}}
+        </strong>
     </div>
 </div>
 @endforeach

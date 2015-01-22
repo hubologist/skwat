@@ -23,13 +23,13 @@
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
                 <li>
-                    <a href="index.php?page=newentry">New Entry</a>
+                    <a href="{{URL::route('account-new')}}">New Entry</a>
                 </li>
                 <li>
                     <a href="{{URL::route('profile', Auth::user()->name)}}">Profile</a>
                 </li>
                 <li>
-                    <a href="index.php?page=settings">Settings</a>
+                    <a href="{{URL::route('account-settings')}}">Settings</a>
                 </li>
                 <li>
                     <a href="{{URL::route('account-change-password')}}">Change Password</a>
