@@ -23,7 +23,6 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <label for="kg" class="">kg</label>
                                 <input type="radio" name="kg" id="kg" class="square form-control input-sm">
-
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <label for="lbs" class="">pounds</label>
