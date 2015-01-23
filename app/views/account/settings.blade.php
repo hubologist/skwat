@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <input class="btn btn-lg btn-danger btn-block" type="submit" value="Create">
+        <input class="btn btn-lg btn-danger btn-block" type="submit" value="Update">
         {{Form::token()}}
     </form>    
 </div>
