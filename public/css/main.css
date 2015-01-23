@@ -28,13 +28,18 @@ a:hover {
     color: rgb(128, 64, 64);
 }
 
-#bimbotron, .navbar, .panel {
+#bimbotron, .navbar, .panel, input, .btn {
     border: 0px;
     border-radius: 0px;
 }
 
+.square {
+    border: 0px !important;
+    border-radius: 0px !important;    
+}
+
 .jumbotron, .navbar, .panel {
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(250, 250, 250,0.9);
     box-shadow: 0px 2px 0px rgba(0,0,0,0.3);
 }
 

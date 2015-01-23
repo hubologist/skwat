@@ -6,23 +6,30 @@
         <h3 class="form-signin-heading">Account settings</h3>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
+                <p>Change display name</p>
                 <div class="form-group">
                     <div class="field">
-                        <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Your Name" value="{{(Input::old('name')?Input::old('name'):'')}}" required>
+                        <input type="text" name="name" id="name" class="square form-control input-sm" placeholder="{{Auth::user()->name}}" value="{{(Input::old('name')?Input::old('name'):'')}}" required>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
+                <p>Unit preference</p>
                 <div class="form-group">
-                    <div class="field">
-                        <label for="email" class="sr-only">Email address</label>
-                        <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email address" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
-                    </div>
-                    <div class="field">
-                        <label for="password" class="sr-only">Password</label>
-                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
+                    <div class="input-group">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <label for="kg" class="">kg</label>
+                                <input type="radio" name="kg" id="kg" class="square form-control input-sm">
+
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <label for="lbs" class="">pounds</label>
+                                <input type="radio" name="lbs" id="lbs" class="square form-control input-sm">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
