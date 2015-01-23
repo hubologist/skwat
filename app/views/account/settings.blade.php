@@ -17,17 +17,15 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <p>Unit preference</p>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <label for="kg" class="">kg</label>
-                                <input type="radio" name="kg" id="kg" class="square form-control input-sm">
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <label for="lbs" class="">pounds</label>
-                                <input type="radio" name="lbs" id="lbs" class="square form-control input-sm">
-                            </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="radio">
+                            <label><input type="radio" name="optradio">Kilograms</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="radio">
+                            <label><input type="radio" name="optradio">Pounds</label>
                         </div>
                     </div>
                 </div>
