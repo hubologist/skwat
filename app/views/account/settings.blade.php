@@ -3,7 +3,7 @@
 @section('content')
 <div class='panel'>
     <form action="{{URL::route('account-settings')}}" class="form-signin" method="post" role="form">
-        <h3 class="form-signin-heading">Account settings</h3>
+        <h3 class="form-signin-heading">Account preferences</h3>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <p>Change display name</p>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="radio">
-                            <label><input type="radio" name="optradio">Pounds</label>
+                            <label><input type="radio" name="optradio" >Pounds</label>
                         </div>
                     </div>
                 </div>
