@@ -8,9 +8,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <p>Change display name</p>
                 <div class="form-group">
-                    <div class="field">
-                        <input type="text" name="name" id="name" class="square form-control input-sm" placeholder="{{$user->name}}" value="{{$user->name}}">
-                    </div>
+                    <input type="text" name="name" id="name" class="square form-control input-sm" placeholder="{{$user->name}}" value="{{$user->name}}">
                 </div>
             </div>
         </div>
