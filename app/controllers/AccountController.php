@@ -22,9 +22,8 @@ class AccountController extends BaseController {
     public function postSettings()
     {
         $validator = Validator::make(Input::all(), array(
-                    'name' => 'required|max:64|min:3',
-                    'unit_pref' => 'required|max:1|min:0'
-        ));
+                    'name' => 'required|max:64|min:3'
+            ));
         
         if ($validator->fails())
         {
@@ -32,6 +31,27 @@ class AccountController extends BaseController {
             return Redirect::route('account-settings')
                             ->withErrors($validator);
         }
+        else
+        {
+            // Change the user's settings
+            $user = User::find(Auth::user()->id);
+            
+            $name = Input::get('name');
+            $pref_units = Input::get('pref_units');
+            
+            $user->name = $name;
+            $user->pref_units = $pref_units;
+
+            if ($user->save())
+            {
+                return Redirect::route('home')
+                                ->with('success', 'Your settings has been successfully updated!');
+            }
+            return Redirect::route('home')
+                            ->with('danger', 'Your settings could not be changed.');
+        }
+        return Redirect::route('home')
+                        ->with('danger', 'Your settings could not be changed.');
     }
     
     public function getNew()

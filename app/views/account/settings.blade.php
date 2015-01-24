@@ -22,9 +22,9 @@
                         <div class="radio">
                             <label>
                                 @if($user->pref_units == 0)
-                                <input type="radio" name="unit_pref" value="0" checked>Kilograms
+                                <input type="radio" name="pref_units" value="0" checked>Kilograms
                                 @else
-                                <input type="radio" name="unit_pref" value="0" >Kilograms                              
+                                <input type="radio" name="pref_units" value="0" >Kilograms                              
                                 @endif                               
                             </label>
                         </div>
@@ -33,9 +33,9 @@
                         <div class="radio">
                             <label>
                                 @if($user->pref_units == 1)
-                                <input type="radio" name="unit_pref" value="1" checked>Pounds
+                                <input type="radio" name="pref_units" value="1" checked>Pounds
                                 @else
-                                <input type="radio" name="unit_pref" value="1" >Pounds                              
+                                <input type="radio" name="pref_units" value="1" >Pounds                              
                                 @endif
                             </label>
                         </div>
