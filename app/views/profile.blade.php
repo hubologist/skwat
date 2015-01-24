@@ -23,29 +23,7 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-8">
-                <strong>
-                    {{$workout->weight}}
-                    @if($user->pref_units == 0)
-                    kg
-                    @else
-                    lbs
-                    @endif
-                    {{$workout->sets}}x{{$workout->reps}}
-                </strong> 
-            </div>
-            <div class="col-md-2">
-                <strong>
-                    {{$workout->weight}}
-                    @if($user->pref_units == 0)
-                    kg
-                    @else
-                    lbs
-                    @endif
-                    {{$workout->sets}}x{{$workout->reps}}
-                </strong> 
-            </div>
-            <div class="col-md-2">
+            <div class="col-md-12">
                 <strong>
                     {{$workout->weight}}
                     @if($user->pref_units == 0)
