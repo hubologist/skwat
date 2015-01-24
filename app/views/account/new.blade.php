@@ -3,28 +3,33 @@
 @section('content')
 <div class='panel'>
     <form action="{{URL::route('account-settings')}}" class="form-signin" method="post" role="form">
-        <h3 class="form-signin-heading">New Entry</h3>
+        <h3 class="form-signin-heading">New Workout</h3>
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <div class="field">
-                        <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Your Name" value="{{(Input::old('name')?Input::old('name'):'')}}" required>
-                    </div>
-                </div>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </span>
+                <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <div class="field">
-                        <label for="email" class="sr-only">Email address</label>
-                        <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email address" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
-                    </div>
-                    <div class="field">
-                        <label for="password" class="sr-only">Password</label>
-                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
-                    </div>
-                </div>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </span>
+                <input type="text" name="quant[2]" class="form-control input-number" value="10" min="1" max="100">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
             </div>
         </div>
         <input class="btn btn-lg btn-danger btn-block" type="submit" value="Create">

@@ -73,5 +73,8 @@
 
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+        
+        <!-- Custom JavaScript -->
+        <script src="{{URL::asset('js/minusplus.js')}}"></script>
     </body>
 </html>
