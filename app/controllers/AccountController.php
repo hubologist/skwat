@@ -19,6 +19,21 @@ class AccountController extends BaseController {
                 ));
     }
     
+    public function postSettings()
+    {
+        $validator = Validator::make(Input::all(), array(
+                    'name' => 'required|max:64|min:3',
+                    'unit_pref' => 'required|max:1|min:0'
+        ));
+        
+        if ($validator->fails())
+        {
+            // Return to form page with proper error messages
+            return Redirect::route('account-settings')
+                            ->withErrors($validator);
+        }
+    }
+    
     public function getNew()
     {
         return View::make('account.new');
@@ -78,8 +93,11 @@ class AccountController extends BaseController {
 
     public function postLogin()
     {
-        $validator = Validator::make(Input::all(), array('email' => 'required|max:64|min:3|email', 'password' => 'required|max:64|min:6'
+        $validator = Validator::make(Input::all(), array(
+            'email' => 'required|max:64|min:3|email',
+            'password' => 'required|max:64|min:6'
         ));
+        
         if ($validator->fails())
         {
             // Return to form page with proper error messages

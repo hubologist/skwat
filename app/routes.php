@@ -32,6 +32,12 @@ Route::group(array('before' => 'auth'), function() {
             'as' => 'account-change-password-post',
             'uses' => 'AccountController@postChangePassword'
         ));
+        
+        // Settings (POST)    
+        Route::post('/account/settings', array(
+            'as' => 'account-settings-post',
+            'uses' => 'AccountController@postSettings'
+        )); 
     });    
     
     // New Entry (GET)    
