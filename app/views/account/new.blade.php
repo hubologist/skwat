@@ -5,17 +5,23 @@
     <form action="{{URL::route('account-settings')}}" class="form-signin" method="post" role="form">
         <h3 class="form-signin-heading">New Workout</h3>
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-md-12">
                 <p>Workout name</p>
                 <div class="form-group">
-                    <input type="text" name="name" id="name" class="square form-control input-sm" placeholder="{{$user->name}}" value="{{$user->name}}">
+                    <input type="text" name="name" id="name" class="square form-control input-sm" placeholder="Madcow">
                 </div>
             </div>
+            <div class="col-md-12">
+                <button type="button" class="btn btn-danger btn-number" id="addInput">Add exercise</button>
+            </div>
+            <div class="col-md-12">
+                <div id="exercise"></div>
+            <div>
             <div class="col-md-6">
                 <p>Reps</p>
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                        <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </span>

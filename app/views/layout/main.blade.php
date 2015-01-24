@@ -75,6 +75,7 @@
         <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
         
         <!-- Custom JavaScript -->
+        <script src="{{URL::asset('js/dynamicform.js')}}"></script>
         <script src="{{URL::asset('js/minusplus.js')}}"></script>
     </body>
 </html>
