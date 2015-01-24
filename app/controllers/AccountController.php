@@ -13,7 +13,10 @@ class AccountController extends BaseController {
 
     public function getSettings()
     {
-        return View::make('account.settings');
+        return View::make('account.settings')
+                ->with(Array(
+                    "user" => Auth::user()
+                ));
     }
     
     public function getNew()
