@@ -54,12 +54,21 @@ class AccountController extends BaseController {
                         ->with('danger', 'Your settings could not be changed.');
     }
     
-    public function getNew()
+    public function getWorkout()
     {
-        return View::make('account.new')
+        return View::make('account.workout')
                 ->with(array(
                     'user' => Auth::user()
                 ));
+    }
+    
+    public function postWorkout()
+    {
+        $validator = Validator::make(Input::all(), array(
+                    'oldpassword' => 'required|max:64|min:6',
+                    'password' => 'required|max:64|min:6',
+                    'confirmpassword' => 'same:password'
+        ));
     }
 
     public function postChangePassword()

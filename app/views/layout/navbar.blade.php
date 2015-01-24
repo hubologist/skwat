@@ -23,7 +23,7 @@
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
                 <li>
-                    <a href="{{URL::route('account-new')}}">New Entry</a>
+                    <a href="{{URL::route('account-workout')}}">New Entry</a>
                 </li>
                 <li>
                     <a href="{{URL::route('profile', Auth::user()->name)}}">Profile</a>
