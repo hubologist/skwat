@@ -28,6 +28,10 @@ a:hover {
     color: rgb(128, 64, 64);
 }
 
+.input-group {
+    margin-bottom: 10px;
+}
+
 #bimbotron, .navbar, .panel, input, .btn {
     border: 0px;
     border-radius: 0px;
