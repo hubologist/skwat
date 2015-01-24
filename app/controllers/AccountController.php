@@ -14,17 +14,17 @@ class AccountController extends BaseController {
     public function getSettings()
     {
         return View::make('account.settings')
-                ->with(Array(
-                    'user' => Auth::user()
-                ));
+                        ->with(Array(
+                            'user' => Auth::user()
+        ));
     }
-    
+
     public function postSettings()
     {
         $validator = Validator::make(Input::all(), array(
                     'name' => 'required|max:64|min:3'
-            ));
-        
+        ));
+
         if ($validator->fails())
         {
             // Return to form page with proper error messages
@@ -35,10 +35,10 @@ class AccountController extends BaseController {
         {
             // Change the user's settings
             $user = User::find(Auth::user()->id);
-            
+
             $name = Input::get('name');
             $pref_units = Input::get('pref_units');
-            
+
             $user->name = $name;
             $user->pref_units = $pref_units;
 
@@ -53,22 +53,53 @@ class AccountController extends BaseController {
         return Redirect::route('home')
                         ->with('danger', 'Your settings could not be changed.');
     }
-    
+
     public function getWorkout()
     {
         return View::make('account.workout')
-                ->with(array(
-                    'user' => Auth::user()
-                ));
+                        ->with(array(
+                            'user' => Auth::user()
+        ));
     }
-    
+
     public function postWorkout()
     {
         $validator = Validator::make(Input::all(), array(
-                    'oldpassword' => 'required|max:64|min:6',
-                    'password' => 'required|max:64|min:6',
-                    'confirmpassword' => 'same:password'
+                    'sets' => 'required',
+                    'reps' => 'required',
+                    'weight' => 'required'
         ));
+        if ($validator->fails())
+        {
+            // Return to form page with proper error messages
+            return Redirect::route('account-workout')
+                            ->withErrors($validator);
+        }
+        else
+        {
+            // Change the user's password
+            $user = User::find(Auth::user()->id);
+
+            $sets = Input::get('sets');
+            $reps = Input::get('reps');
+            $weight = Input::get('weight');
+
+            try {
+                DB::table('workouts')->insert(
+                        array(
+                            'user_id' => $user->id,
+                            'sets' => $sets,
+                            'reps' => $reps,
+                            'weight' => $weight,
+                            'date' => date("Y-m-d")
+                ));
+            } catch (\Exception $e) {
+                return Redirect::route('home')
+                                ->with('danger', 'We couldn\'t log your workout! Try again later.');
+            }
+            return Redirect::route('home')
+                ->with('success', 'Your workout has been logged successfully!');
+        }
     }
 
     public function postChangePassword()
@@ -126,10 +157,10 @@ class AccountController extends BaseController {
     public function postLogin()
     {
         $validator = Validator::make(Input::all(), array(
-            'email' => 'required|max:64|min:3|email',
-            'password' => 'required|max:64|min:6'
+                    'email' => 'required|max:64|min:3|email',
+                    'password' => 'required|max:64|min:6'
         ));
-        
+
         if ($validator->fails())
         {
             // Return to form page with proper error messages

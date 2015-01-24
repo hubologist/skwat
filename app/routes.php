@@ -40,7 +40,7 @@ Route::group(array('before' => 'auth'), function() {
         ));
 
         // Workout entry (POST)    
-        Route::get('/account/workout', array(
+        Route::post('/account/workout', array(
             'as' => 'account-workout-post',
             'uses' => 'AccountController@postWorkout'
         ));

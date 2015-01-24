@@ -1,6 +1,19 @@
 @extends('layout.main')
 
 @section('content')
+@if($errors->has('sets') || $errors->has('reps') || $errors->has('weight'))
+<div class="alert alert-danger">
+    @if($errors->has('sets'))
+    <p>{{$errors->first('sets')}}</p>
+    @endif
+    @if($errors->has('reps'))
+    <p>{{$errors->first('reps')}}</p>
+    @endif
+    @if($errors->has('weight'))
+    <p>{{$errors->first('weight')}}</p>
+    @endif
+</div>
+@endif
 <div class='panel'>
     <form action="{{URL::route('account-workout-post')}}" class="form-signin" method="post" role="form">
         <h3 class="form-signin-heading">New Workout</h3>
@@ -25,7 +38,7 @@
                 <p>Number of repetitions</p>
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number"  data-type="minus" data-field="reps]">
+                        <button type="button" class="btn btn-default btn-number"  data-type="minus" data-field="reps">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </span>
@@ -40,7 +53,7 @@
             <div class="col-md-12">
                 <p>Weight used (don't forget the bar)</p>
                 <div class="input-group">
-                    <input type="text" class="form-control input-sm square" placeholder="Total weight" aria-describedby="weight_label">
+                    <input type="text" name="weight" class="form-control input-sm square" placeholder="Total weight" aria-describedby="weight_label">
                     <span class="input-group-addon square" id="weight_label">
                         @if($user->pref_units == 0)
                             kg
