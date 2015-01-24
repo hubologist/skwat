@@ -5,18 +5,6 @@
     <form action="{{URL::route('account-settings')}}" class="form-signin" method="post" role="form">
         <h3 class="form-signin-heading">New Workout</h3>
         <div class="row">
-            <div class="col-md-12">
-                <p>Workout name</p>
-                <div class="form-group">
-                    <input type="text" name="name" id="name" class="square form-control input-sm" placeholder="Madcow">
-                </div>
-            </div>
-            <div class="col-md-12">
-                <button type="button" class="btn btn-danger btn-number" id="addInput">Add exercise</button>
-            </div>
-            <div class="col-md-12">
-                <div id="exercise"></div>
-            <div>
             <div class="col-md-6">
                 <p>Reps</p>
                 <div class="input-group">
@@ -48,6 +36,10 @@
                         </button>
                     </span>
                 </div>                
+            </div>
+            <div class="col-md-12">
+                <p>Weight</p>
+                <input type="text" name="quant[3]" class="form-control input-number square">
             </div>
         </div>
         <input class="btn btn-lg btn-danger btn-block" type="submit" value="Create">

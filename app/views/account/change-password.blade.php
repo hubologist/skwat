@@ -18,7 +18,7 @@
     <form action="{{URL::route('account-change-password-post')}}" class="form-signin" method="post" role="form">
         <h3 class="form-signin-heading">Change Password</h3>
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-md-12">
                 <p>Insert your current password</p>
                 <label for="oldpassword" class="sr-only">Old Password</label>
                 <input type="password" name="oldpassword" id="oldpassword" class="form-control input-sm square" placeholder="Old Password" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
