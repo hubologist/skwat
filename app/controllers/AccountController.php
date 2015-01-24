@@ -15,7 +15,7 @@ class AccountController extends BaseController {
     {
         return View::make('account.settings')
                 ->with(Array(
-                    "user" => Auth::user()
+                    'user' => Auth::user()
                 ));
     }
     
@@ -56,7 +56,10 @@ class AccountController extends BaseController {
     
     public function getNew()
     {
-        return View::make('account.new');
+        return View::make('account.new')
+                ->with(array(
+                    'user' => Auth::user()
+                ));
     }
 
     public function postChangePassword()
