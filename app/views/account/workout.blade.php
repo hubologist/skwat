@@ -19,7 +19,7 @@
         <h3 class="form-signin-heading">New Workout</h3>
         <div class="row">
             <div class="col-md-6">
-                <p>Total number of sets</p>
+                <p class="text-center">Sets</p>
                 <div class="input-group">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="sets">
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <p>Number of repetitions</p>
+                <p class="text-center">Reps</p>
                 <div class="input-group">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default btn-number"  data-type="minus" data-field="reps">
