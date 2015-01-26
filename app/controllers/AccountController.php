@@ -54,6 +54,14 @@ class AccountController extends BaseController {
                         ->with('danger', 'Your settings could not be changed.');
     }
 
+    public function getCreateWorkout()
+    {
+        return View::make('create-workout')
+                        ->with(array(
+                            'user' => Auth::user()
+        ));
+    }
+
     public function getWorkout()
     {
         return View::make('account.workout')

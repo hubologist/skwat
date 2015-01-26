@@ -46,6 +46,12 @@ Route::group(array('before' => 'auth'), function() {
         ));
     });
 
+    // Workout creation (GET)    
+    Route::get('/create-workout', array(
+        'as' => 'create-workout',
+        'uses' => 'AccountController@getCreateWorkout'
+    ));
+
     // Workout entry (GET)    
     Route::get('/account/workout', array(
         'as' => 'account-workout',

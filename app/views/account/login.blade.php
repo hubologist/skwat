@@ -17,14 +17,10 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <div class="field">
-                        <label for="email" class="sr-only">Email address</label>
-                        <input type="email" name="email" id="email" class="form-control input-sm square" placeholder="Email address" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
-                    </div>
-                    <div class="field">
-                        <label for="password" class="sr-only">Password</label>
-                        <input type="password" name="password" id="password" class="form-control input-sm square" placeholder="Password" required>
-                    </div>
+                    <label for="email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="email" class="form-control input-sm square" placeholder="Email address" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" name="password" id="password" class="form-control input-sm square" placeholder="Password" required>
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="remember"> Remember me
