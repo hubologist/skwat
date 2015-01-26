@@ -19,11 +19,11 @@
                 <div class="form-group">
                     <div class="field">
                         <label for="email" class="sr-only">Email address</label>
-                        <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email address" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
+                        <input type="email" name="email" id="email" class="form-control input-sm square" placeholder="Email address" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
                     </div>
                     <div class="field">
                         <label for="password" class="sr-only">Password</label>
-                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
+                        <input type="password" name="password" id="password" class="form-control input-sm square" placeholder="Password" required>
                     </div>
                     <div class="checkbox">
                         <label>
