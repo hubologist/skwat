@@ -11,33 +11,10 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <h3>Workout history</h3>
+        <h3>Workouts created</h3>
+        @foreach($workouts as $workout)
+        <h4><a href="{{URL::route('workout', $workout->name)}}">{{$workout->name}}</a></h4>
+        @endforeach
     </div>
 </div>
-@foreach($workouts as $workout)
-<div class="panel panel-danger">
-    <div class="panel-heading">
-        <div class="panel-title">
-            <h4>{{date("d-M", strtotime($workout->date))}}</h4>    
-        </div>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-12">
-                <strong>
-                    {{$workout->weight}}
-                    @if($user->pref_units == 0)
-                    kg
-                    @else
-                    lbs
-                    @endif
-                    {{$workout->sets}}x{{$workout->reps}}
-                </strong> 
-            </div>
-        </div>
-    </div>
-
-
-</div>
-@endforeach
 @stop

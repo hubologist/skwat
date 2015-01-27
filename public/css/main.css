@@ -28,8 +28,12 @@ a:hover {
     color: rgb(128, 64, 64);
 }
 
-.input-group {
-    margin-bottom: 10px;
+input[type="text"], input[type="password"] {
+    margin: 5px 0 15px 0 !important;
+}
+
+.inline {
+    display:inline;
 }
 
 #bimbotron, .navbar, .panel, input, .btn {

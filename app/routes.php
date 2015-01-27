@@ -10,7 +10,12 @@
   |
  */
 
-// All
+/*
+  |--------------------------------------------------------------------------
+  | ALL
+  |--------------------------------------------------------------------------
+ */
+
 Route::get('/', array(
     'as' => 'home',
     'uses' => 'HomeController@home'
@@ -21,7 +26,12 @@ Route::get('/user/{name}', array(
     'uses' => 'ProfileController@user'
 ));
 
-// Authenticated group
+/*
+  |--------------------------------------------------------------------------
+  | AUTHENTICATED GROUP
+  |--------------------------------------------------------------------------
+ */
+
 Route::group(array('before' => 'auth'), function() {
 
     // CSRF protection group
@@ -44,6 +54,12 @@ Route::group(array('before' => 'auth'), function() {
             'as' => 'account-workout-post',
             'uses' => 'AccountController@postWorkout'
         ));
+        
+        // Workout creation (POST)    
+        Route::post('/create-workout', array(
+            'as' => 'create-workout-post',
+            'uses' => 'AccountController@postCreateWorkout'
+        ));
     });
 
     // Workout creation (GET)    
@@ -51,12 +67,24 @@ Route::group(array('before' => 'auth'), function() {
         'as' => 'create-workout',
         'uses' => 'AccountController@getCreateWorkout'
     ));
-
-    // Workout entry (GET)    
-    Route::get('/account/workout', array(
-        'as' => 'account-workout',
-        'uses' => 'AccountController@getWorkout'
+    
+    // Exercise creation (GET)    
+    Route::get('/add-exercise', array(
+        'as' => 'add-exercise',
+        'uses' => 'WorkoutController@exercise'
     ));
+
+    // Workout editing (GET)    
+    Route::get('/workout/{name}', array(
+        'as' => 'workout',
+        'uses' => 'WorkoutController@workout'
+    ));
+    
+    // User profile (GET) 
+    Route::get('/user/{name}', array(
+    'as' => 'profile',
+    'uses' => 'ProfileController@user'
+));
 
     // Settings (GET)    
     Route::get('/account/settings', array(
@@ -77,7 +105,12 @@ Route::group(array('before' => 'auth'), function() {
     ));
 });
 
-// Unauthenticated group
+/*
+  |--------------------------------------------------------------------------
+  | UNAUTHENTICATED GROUP
+  |--------------------------------------------------------------------------
+ */
+
 Route::group(array('before' => 'guest'), function() {
 
     // CSRF protection group

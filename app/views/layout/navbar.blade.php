@@ -23,17 +23,14 @@
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
                 <li>
-                    <a href="{{URL::route('account-workout')}}">New Entry</a>
+                    <a href="{{URL::route('create-workout')}}">Create Workout</a>
                 </li>
                 <li>
                     <a href="{{URL::route('profile', Auth::user()->name)}}">Profile</a>
                 </li>
                 <li>
                     <a href="{{URL::route('account-settings')}}">Settings</a>
-                </li>
-                <li>
-                    <a href="{{URL::route('account-change-password')}}">Change Password</a>
-                </li>                
+                </li>               
                 <li>
                     <a href="{{URL::route('account-logout')}}">Logout</a>
                 </li>                

@@ -25,8 +25,11 @@
         <![endif]-->
     </head>
     <body>
+        <!-- Navbar before container -->
         @include('layout.navbar')
         <div class='container'>
+            
+            <!-- Session messages -->
             @if(Session::has('danger'))
             <div class='alert alert-danger'>
                 <p>{{Session::get('danger')}}</p>
@@ -42,8 +45,10 @@
                 <p>{{Session::get('success')}}</p>
             </div>
             @endif
-
-            @yield('content')            
+            
+            <!-- Content loads here -->
+            @yield('content')
+            
         </div>
 
         <!-- 
@@ -71,7 +76,7 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <!-- Bootstrap's JavaScript -->
         <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
         
         <!-- Custom JavaScript -->

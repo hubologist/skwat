@@ -54,6 +54,41 @@ class AccountController extends BaseController {
                         ->with('danger', 'Your settings could not be changed.');
     }
 
+    public function postCreateWorkout()
+    {
+        $validator = Validator::make(Input::all(), array(
+                    'name' => 'required|unique:workouts|max:64|min:3'
+        ));
+        if ($validator->fails())
+        {
+            // Return to form page with proper error messages
+            return Redirect::route('create-workout')
+                            ->withErrors($validator);
+        }
+        else
+        {
+            // Change the user's settings
+            $user = User::find(Auth::user()->id);
+
+            $name = Input::get('name');
+
+
+            try {
+                DB::table('workouts')->insert(
+                        array(
+                            'user_id' => $user->id,
+                            'name' => $name,
+                            'created_at' => date("Y-m-d")
+                ));
+            } catch (\Exception $e) {
+                return Redirect::route('create-workout')
+                                ->with('danger', 'We weren\'t able to create your workout! Please try again later.');
+            }
+            return Redirect::route('workout', $name)
+                            ->with('success', 'You\'ve created a new workout, now add some exercises.');
+        }
+    }
+
     public function getCreateWorkout()
     {
         return View::make('create-workout')
@@ -106,7 +141,7 @@ class AccountController extends BaseController {
                                 ->with('danger', 'We couldn\'t log your workout! Try again later.');
             }
             return Redirect::route('home')
-                ->with('success', 'Your workout has been logged successfully!');
+                            ->with('success', 'Your workout has been logged successfully!');
         }
     }
 
