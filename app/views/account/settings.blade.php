@@ -21,15 +21,12 @@
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </span>
+                    <input type="text" name="weight" class="form-control input-number square" value="{{$user->weight}}" aria-describedby="basic-addon2">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" data-type="minus" data-field="reps">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </span>
-                    <div class="input-group">
-                        <input type="text" name="reps" class="form-control input-number square" value="12" min="1" max="99" aria-describedby="basic-addon2">
-                        <span class="input-group-addon square" id="basic-addon2">kg</span>
-                    </div>
                 </div>
             </div>
         </div>
