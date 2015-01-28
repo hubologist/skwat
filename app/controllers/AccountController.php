@@ -35,12 +35,26 @@ class AccountController extends BaseController {
         {
             // Change the user's settings
             $user = User::find(Auth::user()->id);
-
+            
+            // Getting our Input variables
             $name = Input::get('name');
+            $weight = Input::get('weight');
             $pref_units = Input::get('pref_units');
+            $track_bp = Input::get('track_bp');
+            $track_dl = Input::get('track_dl');
+            $track_op = Input::get('track_op');
+            $track_pu = Input::get('track_pu');
+            $track_sq = Input::get('track_sq');
 
+            // Storing our variables in the $user object
             $user->name = $name;
+            $user->weight = $weight;
             $user->pref_units = $pref_units;
+            $user->track_bp = $track_bp;
+            $user->track_dl = $track_dl;
+            $user->track_op = $track_op;
+            $user->track_pu = $track_pu;
+            $user->track_sq = $track_sq;
 
             if ($user->save())
             {

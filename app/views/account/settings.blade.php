@@ -17,16 +17,68 @@
                 <strong>Update weight ({{$user->pref_units}})</strong>
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant">
+                        <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="weight">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </span>
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant">
+                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="weight">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </span>
-                    <input type="text" name="quant" class="form-control input-number square" value="{{$user->weight}}" min="1" max="999">
+                    <input type="text" name="weight" class="form-control input-number square" value="{{$user->weight}}" min="1" max="999">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <strong>Displayed lifts</strong>
+                <div class="form-wall">
+                    <div class="checbox">
+                        <label>
+                            @if($user->track_bp == 1)
+                            <input type="checkbox" name="track_bp" value="1" checked> Bench Press
+                            @else
+                            <input type="checkbox" name="track_bp" value="1" > Bench Press                              
+                            @endif
+                        </label>
+                    </div>
+                    <div class="checbox">
+                        <label>
+                            @if($user->track_dl == 1)
+                            <input type="checkbox" name="track_dl" value="1" checked> Deadlift
+                            @else
+                            <input type="checkbox" name="track_dl" value="1" > Deadlift                              
+                            @endif
+                        </label>
+                    </div>
+                    <div class="checbox">
+                        <label>
+                            @if($user->track_op == 1)
+                            <input type="checkbox" name="track_op" value="1" checked> Overhead Press
+                            @else
+                            <input type="checkbox" name="track_op" value="1" > Overhead Press                              
+                            @endif
+                        </label>
+                    </div>
+                    <div class="checbox">
+                        <label>
+                            @if($user->track_pu == 1)
+                            <input type="checkbox" name="track_pu" value="1" checked> Pull Up
+                            @else
+                            <input type="checkbox" name="track_pu" value="1" > Pull Up                              
+                            @endif
+                        </label>
+                    </div>
+                    <div class="checbox">
+                        <label>
+                            @if($user->track_sq == 1)
+                            <input type="checkbox" name="track_sq" value="1" checked> Squat
+                            @else
+                            <input type="checkbox" name="track_sq" value="1" > Squat                              
+                            @endif
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
