@@ -13,13 +13,18 @@ class ProfileController extends BaseController {
         if ($user->count())
         {
             $user = $user->first();
-            $workouts = DB::table('workouts')->where('user_id', '=', $user->id)->get();
-            
-            Return View::make('profile')
-                    ->with('user', $user)
-                    ->with('workouts', $workouts);
+            $lifts = [
+                "track_bp",
+                "track_dl",
+                "track_op",
+                "track_pu",
+                "track_sq"
+            ];
+
+            return View::make('profile')
+                            ->with('user', $user)
+                            ->with('lifts', $lifts);
         }
-        
         return App::abort(404);
     }
 

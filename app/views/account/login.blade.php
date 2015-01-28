@@ -17,9 +17,9 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <label for="email" class="sr-only">Email address</label>
-                    <input type="email" name="email" id="email" class="form-control input-sm square" placeholder="Email address" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
-                    <label for="password" class="sr-only">Password</label>
+                    <label for="email">Your email address</label>
+                    <input type="text" name="email" id="email" class="form-control input-sm square" placeholder="Email address" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
+                    <label for="password">Your password</label>
                     <input type="password" name="password" id="password" class="form-control input-sm square" placeholder="Password" required>
                     <div class="checkbox">
                         <label>

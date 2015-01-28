@@ -10,32 +10,53 @@
 @endif
 <div class="panel panel-default">
     <div class="panel-body">
-        <h3>{{$workout->name}}</h3>
-        <p>{{$workout->description}}</p>
+        <h2>{{$workout->name}}</h2>
+        <div class="table-responsive">          
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Exercise</th>
+                        @for ($i = 1; $i <= 5; $i++)
+                        <th class="text-center">Set {{$i}}</th>
+                        @endfor
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($exercises as $exercise)
+                    <tr>
+                        <td>{{$exercise->name}}</td>
+                        @for ($i = 0; $i < $exercise->sets; $i++)
+                        <td class="text-center">{{$exercise->reps}}</td>
+                        @endfor
+                    </tr>
+                    @endforeach   
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <div class='panel'>
-    <form action="" class="form-signin" method="post" role="form">
+    <form action="{{URL::route('workout-edit-post')}}" class="form-signin" method="post" role="form">
         <h3 class="form-signin-heading">Add exercise</h3>
         <div class="form-group">
-            Which exercise:
+            Which exercise
             <label for="name" class="sr-only">Exercise Name</label>
             <input type="text" name="name" id="name" class="form-control input-sm square" placeholder="Exercise Name" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
         </div>
         <div class="form-group">
-            How many sets?
+            How many sets (you will add the reps later)
             <div class="input-group">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-default btn-number"  data-type="minus" data-field="reps">
+                    <button type="button" class="btn btn-default btn-number"  data-type="minus" data-field="sets">
                         <span class="glyphicon glyphicon-minus"></span>
                     </button>
                 </span>
-                <input type="text" name="reps" class="form-control input-number square" value="12" min="1" max="99">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="reps">
+                    <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="sets">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </span>
+                <input type="text" name="sets" class="form-control input-number square" value="4" min="1" max="99">
             </div>
         </div>
         <div class="form-group">

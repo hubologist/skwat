@@ -19,13 +19,11 @@
         <h3 class="form-signin-heading">Change Password</h3>
         <div class="row">
             <div class="col-md-12">
-                <p>Insert your current password</p>
-                <label for="oldpassword" class="sr-only">Old Password</label>
+                <label for="oldpassword">Insert your current password</label>
                 <input type="password" name="oldpassword" id="oldpassword" class="form-control input-sm square" placeholder="Old Password" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
-                <p>Choose a new password</p>
-                <label for="password" class="sr-only">New Password</label>
+                <label for="password">Choose a new password</label>
                 <input type="password" name="password" id="password" class="form-control input-sm square" placeholder="New Password" required>
-                <label for="confirmpassword" class="sr-only">Confirm Password</label>
+                <label for="confirmpassword">Repeat your new password</label>
                 <input type="password" name="confirmpassword" id="confirmpassword" class="form-control input-sm square" placeholder="Confirm Password" required>
             </div>
         </div>

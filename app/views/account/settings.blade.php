@@ -14,19 +14,19 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <strong>Update weight</strong>
+                <strong>Update weight ({{$user->pref_units}})</strong>
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" data-type="plus" data-field="reps">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="weight" class="form-control input-number square" value="{{$user->weight}}" aria-describedby="basic-addon2">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" data-type="minus" data-field="reps">
+                        <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </span>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </span>
+                    <input type="text" name="quant" class="form-control input-number square" value="{{$user->weight}}" min="1" max="999">
                 </div>
             </div>
         </div>
@@ -37,10 +37,10 @@
                     <div class="col-sm-6">
                         <div class="radio">
                             <label>
-                                @if($user->pref_units == 0)
-                                <input type="radio" name="pref_units" value="0" checked>Kilograms
+                                @if($user->pref_units == "kg")
+                                <input type="radio" name="pref_units" value="kg" checked>Kilograms
                                 @else
-                                <input type="radio" name="pref_units" value="0" >Kilograms                              
+                                <input type="radio" name="pref_units" value="kg" >Kilograms                              
                                 @endif                               
                             </label>
                         </div>
@@ -48,10 +48,10 @@
                     <div class="col-sm-6">
                         <div class="radio">
                             <label>
-                                @if($user->pref_units == 1)
-                                <input type="radio" name="pref_units" value="1" checked>Pounds
+                                @if($user->pref_units == "lbs")
+                                <input type="radio" name="pref_units" value="lbs" checked>Pounds
                                 @else
-                                <input type="radio" name="pref_units" value="1" >Pounds                              
+                                <input type="radio" name="pref_units" value="lbs" >Pounds                              
                                 @endif
                             </label>
                         </div>
@@ -59,20 +59,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="form-signin-heading">Change Password</h3>
-                <strong>Insert your current password</strong>
-                <label for="oldpassword" class="sr-only">Old Password</label>
-                <input type="password" name="oldpassword" id="oldpassword" class="form-control input-sm square" placeholder="Old Password" value="{{(Input::old('email')?Input::old('email'):'')}}" required>
-                <strong>Choose a new password</strong>
-                <label for="password" class="sr-only">New Password</label>
-                <input type="password" name="password" id="password" class="form-control input-sm square" placeholder="New Password" required>
-                <label for="confirmpassword" class="sr-only">Confirm Password</label>
-                <input type="password" name="confirmpassword" id="confirmpassword" class="form-control input-sm square" placeholder="Confirm Password" required>
-            </div>
-        </div>
         <input class="btn btn-lg btn-danger btn-block" type="submit" value="Update">
+        <p class="text-center"><a class="text-center" href="{{URL::route('account-change-password')}}">Change password</a></p>
         {{Form::token()}}
     </form>    
 </div>

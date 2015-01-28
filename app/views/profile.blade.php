@@ -11,10 +11,29 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <h3>Workouts created</h3>
-        @foreach($workouts as $workout)
-        <h4><a href="{{URL::route('workout', $workout->name)}}">{{$workout->name}}</a></h4>
-        @endforeach
+        <h3>My lifts</h3>
+        <div class="table-responsive">          
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Exercise</th>
+                        <th class="text-center">Max weight</th>
+                        <th class="text-center">Repetitions</th>
+                        <th class="text-center">Last trained</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($lifts as $lift)
+                    @if($user->$lift == 1)
+                    <tr>
+                        <td>{{$lift}}</td>
+                        <td class="text-center">500kg</td>
+                    </tr>
+                    @endif
+                    @endforeach   
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 @stop

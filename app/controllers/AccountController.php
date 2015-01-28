@@ -44,13 +44,13 @@ class AccountController extends BaseController {
 
             if ($user->save())
             {
-                return Redirect::route('home')
+                return Redirect::route('account-settings')
                                 ->with('success', 'Your settings has been successfully updated!');
             }
-            return Redirect::route('home')
+            return Redirect::route('account-settings')
                             ->with('danger', 'Your settings could not be changed.');
         }
-        return Redirect::route('home')
+        return Redirect::route('account-settings')
                         ->with('danger', 'Your settings could not be changed.');
     }
 
@@ -225,7 +225,7 @@ class AccountController extends BaseController {
             if ($auth)
             {
                 // Redirect to intended page
-                return Redirect::intended('/')->with('success', 'You are now logged in!');
+                return Redirect::intended('/')->with('success', 'Welcome back!');
             }
             else
             {
