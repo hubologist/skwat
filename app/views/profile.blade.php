@@ -17,20 +17,30 @@
                 <thead>
                     <tr>
                         <th>Exercise</th>
-                        <th class="text-center">Max weight</th>
-                        <th class="text-center">Repetitions</th>
+                        <th class="text-center">Weight</th>
+                        <th class="text-center">Reps</th>
                         <th class="text-center">Last trained</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($lifts as $lift)
-                    @if($user->$lift == 1)
                     <tr>
-                        <td>{{$lift}}</td>
+                        <td>Bench Press</td>
                         <td class="text-center">500kg</td>
-                    </tr>
-                    @endif
-                    @endforeach   
+                        <td class="text-center">12</td>
+                        <td class="text-center">Yesterday</td>
+                    </tr> 
+                    <tr>
+                        <td>Deadlift</td>
+                        <td class="text-center">500kg</td>
+                        <td class="text-center">12</td>
+                        <td class="text-center">Yesterday</td>
+                    </tr> 
+                    <tr>
+                        <td>Squat</td>
+                        <td class="text-center">500kg</td>
+                        <td class="text-center">12</td>
+                        <td class="text-center">Yesterday</td>
+                    </tr> 
                 </tbody>
             </table>
         </div>
