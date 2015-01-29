@@ -13,12 +13,27 @@ class ProfileController extends BaseController {
         if ($user->count())
         {
             $user = $user->first();
+            
             $lifts = [];
             
+            if ($user->track_bp == 1) {
+                $lifts[] = "Bench Press";
+            }
+            if ($user->track_dl == 1) {
+                $lifts[] = "Bench Press";
+            }
+            if ($user->track_op == 1) {
+                $lifts[] = "Bench Press";
+            }
+            if ($user->track_pu == 1) {
+                $lifts[] = "Bench Press";
+            }
+            if ($user->track_sq == 1) {
+                $lifts[] = "Bench Press";
+            }
 
             return View::make('profile')
                             ->with('user', $user)
-                            ->with('tracked', $tracked)
                             ->with('lifts', $lifts);
         }
         return App::abort(404);
