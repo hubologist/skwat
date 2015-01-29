@@ -48,14 +48,19 @@ Route::group(array('before' => 'auth'), function() {
             'as' => 'account-settings-post',
             'uses' => 'AccountController@postSettings'
         ));
-        
     });
-    
+
+    // New entry (GET) 
+    Route::get('/new-entry', array(
+        'as' => 'new-entry',
+        'uses' => 'ProfileController@entry'
+    ));
+
     // User profile (GET) 
     Route::get('/user/{name}', array(
-    'as' => 'profile',
-    'uses' => 'ProfileController@user'
-));
+        'as' => 'profile',
+        'uses' => 'ProfileController@user'
+    ));
 
     // Settings (GET)    
     Route::get('/account/settings', array(

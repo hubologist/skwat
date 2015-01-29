@@ -4,8 +4,9 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <h2>{{$user->name}}</h2>
-        <p>Member since: {{$user->created_at}}</p>
+        <h2>Welcome, {{$user->name}}!</h2>
+        <p>This is your profile page, form here you can track your lift history and log new entries.</p>
+        <a href="{{URL::route('new-entry')}}" class="btn btn-danger">New entry</a>
     </div>
 </div>
 
