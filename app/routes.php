@@ -48,31 +48,8 @@ Route::group(array('before' => 'auth'), function() {
             'as' => 'account-settings-post',
             'uses' => 'AccountController@postSettings'
         ));
-
-        // Workout creation (POST)    
-        Route::post('/create-workout', array(
-            'as' => 'create-workout-post',
-            'uses' => 'AccountController@postCreateWorkout'
-        ));
         
-        // Workout editing (POST)    
-        Route::post('/workout/{name}', array(
-            'as' => 'workout-edit-post',
-            'uses' => 'WorkoutController@postEditWorkout'
-        ));
     });
-
-    // Workout creation (GET)    
-    Route::get('/create-workout', array(
-        'as' => 'create-workout',
-        'uses' => 'AccountController@getCreateWorkout'
-    ));
-
-    // Workout editing (GET)    
-    Route::get('/workout/{name}', array(
-        'as' => 'workout-edit',
-        'uses' => 'WorkoutController@getEditWorkout'
-    ));
     
     // User profile (GET) 
     Route::get('/user/{name}', array(

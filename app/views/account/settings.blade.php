@@ -32,58 +32,6 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <strong>Displayed lifts</strong>
-                <div class="form-wall">
-                    <div class="checbox">
-                        <label>
-                            @if($user->track_bp == 1)
-                            <input type="checkbox" name="track_bp" value="1" checked> Bench Press
-                            @else
-                            <input type="checkbox" name="track_bp" value="1" > Bench Press                              
-                            @endif
-                        </label>
-                    </div>
-                    <div class="checbox">
-                        <label>
-                            @if($user->track_dl == 1)
-                            <input type="checkbox" name="track_dl" value="1" checked> Deadlift
-                            @else
-                            <input type="checkbox" name="track_dl" value="1" > Deadlift                              
-                            @endif
-                        </label>
-                    </div>
-                    <div class="checbox">
-                        <label>
-                            @if($user->track_op == 1)
-                            <input type="checkbox" name="track_op" value="1" checked> Overhead Press
-                            @else
-                            <input type="checkbox" name="track_op" value="1" > Overhead Press                              
-                            @endif
-                        </label>
-                    </div>
-                    <div class="checbox">
-                        <label>
-                            @if($user->track_pu == 1)
-                            <input type="checkbox" name="track_pu" value="1" checked> Pull Up
-                            @else
-                            <input type="checkbox" name="track_pu" value="1" > Pull Up                              
-                            @endif
-                        </label>
-                    </div>
-                    <div class="checbox">
-                        <label>
-                            @if($user->track_sq == 1)
-                            <input type="checkbox" name="track_sq" value="1" checked> Squat
-                            @else
-                            <input type="checkbox" name="track_sq" value="1" > Squat                              
-                            @endif
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
                 <strong>Unit preference</strong>
                 <div class="row">
                     <div class="col-sm-6">
