@@ -13,20 +13,8 @@ class ProfileController extends BaseController {
         if ($user->count())
         {
             $user = $user->first();
-            $lifts = [
-                "Bench Press",
-                "Deadlift",
-                "Overhead Press",
-                "Pull-up",
-                "Squat"
-            ];
-            $tracked = [
-                "tracked_bp",
-                "tracked_dl",
-                "tracked_op",
-                "tracked_pu",
-                "tracked_sq"
-            ];
+            $lifts = [];
+            
 
             return View::make('profile')
                             ->with('user', $user)
