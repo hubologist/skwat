@@ -9,7 +9,7 @@ class EntryController extends BaseController {
     public function postEntry()
     {
         $validator = Validator::make(Input::all(), array(
-                    'exercise' => 'required',
+                    'sets' => 'required',
                     'reps' => 'required',
                     'weight' => 'required'
         ));
@@ -22,46 +22,32 @@ class EntryController extends BaseController {
         }
         else
         {
-            // Log the workout
-            if ($user->count())
+            $workout = new Workout();
+            $user = User::find(Auth::user()->id);
+
+            // Getting our Input variables
+            $weight = Input::get('weight');
+            $sets = Input::get('sets');
+            $reps = Input::get('reps');
+
+            $workout->user_id = $user->id;
+            $workout->weight = $weight;
+            $workout->sets = $sets;
+            $workout->reps = $reps;
+
+            if ($workout->save())
             {
-                $user = $user->first();
-
-                // Generate new code and password for the user
-                $code = str_random(64);
-                $password = str_random(8);
-
-                $user->code = $code;
-                $user->password_temp = Hash::make($password);
-
-                if ($user->save())
-                {
-                    // This means the user code has been successfully updated
-                    Mail::send('emails.auth.recover', array(
-                        'link' => URL::route('account-reactivate', $code),
-                        'name' => $user->name,
-                        'password' => $password
-                            ), function($message) use($user) {
-                        $message
-                                ->to($user->email, $user->name)
-                                ->subject('Skwat | Your new password');
-                    });
-
-                    return Redirect::route('home')
-                                    ->with('warning', 'We have sent you a new password by email.');
-                }
+                return Redirect::route('new-entry')
+                                ->with('success', 'Your workout has been logged.');
             }
         }
-        return Redirect::route('account-recovery')
+        return Redirect::route('new-entry')
                         ->with('danger', 'Something went wrong, please try again later.');
     }
 
     public function getEntry()
     {
-        $exercises = DB::table('exercises')->get();
-
-        return View::make('new-entry')
-                        ->with('exercises', $exercises);
+        return View::make('new-entry');
     }
 
 }

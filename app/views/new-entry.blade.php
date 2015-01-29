@@ -1,8 +1,21 @@
 @extends('layout.main')
 
 @section('content')
+@if($errors->has('sets') || $errors->has('reps') || $errors->has('weight'))
+<div class="alert alert-danger">
+    @if($errors->has('sets'))
+    <p>{{$errors->first('sets')}}</p>
+    @endif
+    @if($errors->has('reps'))
+    <p>{{$errors->first('reps')}}</p>
+    @endif
+    @if($errors->has('weight'))
+    <p>{{$errors->first('weight')}}</p>
+    @endif
+</div>
+@endif
 <div class='panel'>
-    <form action="{{URL::route('new-entry')}}" class="form-signin" method="post" role="form">
+    <form action="{{URL::route('new-entry-post')}}" class="form-signin" method="post" role="form">
         <h3 class="form-signin-heading">New entry</h3>
         <div class="row">
             <div class="col-md-12">
@@ -42,7 +55,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <strong>Weight</strong>
+                <strong>Weight (with bar)</strong>
                 <div class="input-group">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="weight">
@@ -55,22 +68,6 @@
                         </button>
                     </span>
                     <input type="text" name="weight" class="form-control input-number square" value="20" min="1" max="999">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <strong>Lift</strong>
-                <div class="row">
-                    @foreach($exercises as $exercise)
-                    <div class="col-sm-6">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="exercise" value="{{$exercise->name}}">{{$exercise->name}}                              
-                            </label>
-                        </div>
-                    </div>
-                    @endforeach
                 </div>
             </div>
         </div>

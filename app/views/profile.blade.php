@@ -17,31 +17,19 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Exercise</th>
-                        <th class="text-center">Weight</th>
-                        <th class="text-center">Reps</th>
-                        <th class="text-center">Last trained</th>
+                        <th>Weight</th>
+                        <th>Sets x Reps</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($workouts as $workout)
                     <tr>
-                        <td>Bench Press</td>
-                        <td class="text-center">500kg</td>
-                        <td class="text-center">12</td>
-                        <td class="text-center">Yesterday</td>
-                    </tr> 
-                    <tr>
-                        <td>Deadlift</td>
-                        <td class="text-center">500kg</td>
-                        <td class="text-center">12</td>
-                        <td class="text-center">Yesterday</td>
-                    </tr> 
-                    <tr>
-                        <td>Squat</td>
-                        <td class="text-center">500kg</td>
-                        <td class="text-center">12</td>
-                        <td class="text-center">Yesterday</td>
-                    </tr> 
+                        <td>{{$workout->weight}} {{$user->pref_units}}</td>
+                        <td>{{$workout->sets}} x {{$workout->reps}}</td>
+                        <td>{{$workout->updated_at}}</td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

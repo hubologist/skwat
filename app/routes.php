@@ -48,9 +48,15 @@ Route::group(array('before' => 'auth'), function() {
             'as' => 'account-settings-post',
             'uses' => 'AccountController@postSettings'
         ));
+
+        // New Entry (POST)    
+        Route::post('/new-entry', array(
+            'as' => 'new-entry-post',
+            'uses' => 'EntryController@postEntry'
+        ));
     });
 
-    // New entry (GET) 
+    // New Entry (GET) 
     Route::get('/new-entry', array(
         'as' => 'new-entry',
         'uses' => 'EntryController@getEntry'
