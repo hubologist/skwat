@@ -27,7 +27,7 @@
                     <tr>
                         <td>{{$workout->weight}} {{$user->pref_units}}</td>
                         <td>{{$workout->sets}} x {{$workout->reps}}</td>
-                        <td>{{$workout->updated_at}}</td>
+                        <td>{{date('jS M', strtotime($workout->created_at))}}</td>
                     </tr>
                     @endforeach
                 </tbody>
