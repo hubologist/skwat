@@ -25,6 +25,7 @@
                 <tbody>
                     @foreach($lifts as $lift)
                     @if($user->$lift == 1)
+                    @if($user->$lift == "tracked_bp")
                     <tr>
                         <td>{{$lift}}</td>
                         <td class="text-center">500kg</td>

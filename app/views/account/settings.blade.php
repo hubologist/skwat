@@ -37,45 +37,45 @@
                     <div class="checbox">
                         <label>
                             @if($user->track_bp == 1)
-                            <input type="checkbox" name="Bench Press" value="1" checked> Bench Press
+                            <input type="checkbox" name="track_bp" value="1" checked> Bench Press
                             @else
-                            <input type="checkbox" name="Bench Press" value="1" > Bench Press                              
+                            <input type="checkbox" name="track_bp" value="1" > Bench Press                              
                             @endif
                         </label>
                     </div>
                     <div class="checbox">
                         <label>
                             @if($user->track_dl == 1)
-                            <input type="checkbox" name="Deadlift" value="1" checked> Deadlift
+                            <input type="checkbox" name="track_dl" value="1" checked> Deadlift
                             @else
-                            <input type="checkbox" name="Deadlift" value="1" > Deadlift                              
+                            <input type="checkbox" name="track_dl" value="1" > Deadlift                              
                             @endif
                         </label>
                     </div>
                     <div class="checbox">
                         <label>
                             @if($user->track_op == 1)
-                            <input type="checkbox" name="Overhead Press" value="1" checked> Overhead Press
+                            <input type="checkbox" name="track_op" value="1" checked> Overhead Press
                             @else
-                            <input type="checkbox" name="Overhead Press" value="1" > Overhead Press                              
+                            <input type="checkbox" name="track_op" value="1" > Overhead Press                              
                             @endif
                         </label>
                     </div>
                     <div class="checbox">
                         <label>
                             @if($user->track_pu == 1)
-                            <input type="checkbox" name="Pull-up" value="1" checked> Pull Up
+                            <input type="checkbox" name="track_pu" value="1" checked> Pull Up
                             @else
-                            <input type="checkbox" name="Pull-up" value="1" > Pull Up                              
+                            <input type="checkbox" name="track_pu" value="1" > Pull Up                              
                             @endif
                         </label>
                     </div>
                     <div class="checbox">
                         <label>
                             @if($user->track_sq == 1)
-                            <input type="checkbox" name="Squat" value="1" checked> Squat
+                            <input type="checkbox" name="track_sq" value="1" checked> Squat
                             @else
-                            <input type="checkbox" name="Squat" value="1" > Squat                              
+                            <input type="checkbox" name="track_sq" value="1" > Squat                              
                             @endif
                         </label>
                     </div>

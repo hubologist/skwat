@@ -20,9 +20,17 @@ class ProfileController extends BaseController {
                 "Pull-up",
                 "Squat"
             ];
+            $tracked = [
+                "tracked_bp",
+                "tracked_dl",
+                "tracked_op",
+                "tracked_pu",
+                "tracked_sq"
+            ];
 
             return View::make('profile')
                             ->with('user', $user)
+                            ->with('tracked', $tracked)
                             ->with('lifts', $lifts);
         }
         return App::abort(404);
