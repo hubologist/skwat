@@ -14,11 +14,11 @@ class ProfileController extends BaseController {
         {
             $user = $user->first();
             $lifts = [
-                "track_bp",
-                "track_dl",
-                "track_op",
-                "track_pu",
-                "track_sq"
+                "Bench Press",
+                "Deadlift",
+                "Overhead Press",
+                "Pull-up",
+                "Squat"
             ];
 
             return View::make('profile')
