@@ -11,6 +11,7 @@
         <link href="{{URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
         <!-- Custom CSS -->
+        <link href="{{URL::asset('css/bootstrap-select.css')}}" rel="stylesheet">
         <link href="{{URL::asset('css/login.css')}}" rel="stylesheet">
         <link href="{{URL::asset('css/main.css')}}" rel="stylesheet">
 
@@ -26,9 +27,12 @@
     </head>
     <body>
         <!-- Navbar before container -->
+        @if (Auth::check())
+        @include('layout.userbar')
+        @else
         @include('layout.navbar')
+        @endif
         <div class='container'>
-            
             <!-- Session messages -->
             @if(Session::has('danger'))
             <div class='alert alert-danger'>
@@ -45,10 +49,10 @@
                 <p>{{Session::get('success')}}</p>
             </div>
             @endif
-            
+
             <!-- Content loads here -->
             @yield('content')
-            
+
         </div>
 
         <!-- 
@@ -78,8 +82,9 @@
 
         <!-- Bootstrap's JavaScript -->
         <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
-        
+
         <!-- Custom JavaScript -->
+        <script src="{{URL::asset('js/bootstrap-select.js')}}"></script>
         <script src="{{URL::asset('js/minusplus.js')}}"></script>
     </body>
 </html>

@@ -138,7 +138,7 @@ class AccountController extends BaseController {
             if ($auth)
             {
                 // Redirect to intended page
-                return Redirect::intended('/')->with('success', 'Welcome back!');
+                return Redirect::route('profile', Auth::user()->name)->with('success', 'Looking good!');
             }
             else
             {

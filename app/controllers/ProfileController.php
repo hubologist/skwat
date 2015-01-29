@@ -19,5 +19,4 @@ class ProfileController extends BaseController {
         }
         return App::abort(404);
     }
-
 }

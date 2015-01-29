@@ -53,7 +53,7 @@ Route::group(array('before' => 'auth'), function() {
     // New entry (GET) 
     Route::get('/new-entry', array(
         'as' => 'new-entry',
-        'uses' => 'ProfileController@entry'
+        'uses' => 'EntryController@getEntry'
     ));
 
     // User profile (GET) 

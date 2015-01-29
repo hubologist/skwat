@@ -8,17 +8,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" id="logo" href="{{URL::route('home')}}">Skwat</a>
+            <a class="navbar-brand" id="logo" href="{{URL::route('profile', Auth::user()->name)}}">Skwat</a>
         </div>
         
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="{{URL::route('account-login')}}">Login</a>
+                    <a href="{{URL::route('profile', Auth::user()->name)}}">Profile</a>
                 </li>
                 <li>
-                    <a href="{{URL::route('account-create')}}">Register</a>
+                    <a href="{{URL::route('account-settings')}}">Settings</a>
+                </li>               
+                <li>
+                    <a href="{{URL::route('account-logout')}}">Logout</a>
                 </li>                
             </ul>
         </div><!-- /.navbar-collapse -->
