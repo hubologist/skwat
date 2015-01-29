@@ -40,21 +40,11 @@ class AccountController extends BaseController {
             $name = Input::get('name');
             $weight = Input::get('weight');
             $pref_units = Input::get('pref_units');
-            $track_bp = Input::get('track_bp');
-            $track_dl = Input::get('track_dl');
-            $track_op = Input::get('track_op');
-            $track_pu = Input::get('track_pu');
-            $track_sq = Input::get('track_sq');
 
             // Storing our variables in the $user object
             $user->name = $name;
             $user->weight = $weight;
             $user->pref_units = $pref_units;
-            $user->track_bp = $track_bp;
-            $user->track_dl = $track_dl;
-            $user->track_op = $track_op;
-            $user->track_pu = $track_pu;
-            $user->track_sq = $track_sq;
 
             if ($user->save())
             {
@@ -66,97 +56,6 @@ class AccountController extends BaseController {
         }
         return Redirect::route('account-settings')
                         ->with('danger', 'Your settings could not be changed.');
-    }
-
-    public function postCreateWorkout()
-    {
-        $validator = Validator::make(Input::all(), array(
-                    'name' => 'required|unique:workouts|max:64|min:3'
-        ));
-        if ($validator->fails())
-        {
-            // Return to form page with proper error messages
-            return Redirect::route('create-workout')
-                            ->withErrors($validator);
-        }
-        else
-        {
-            // Change the user's settings
-            $user = User::find(Auth::user()->id);
-
-            $name = Input::get('name');
-
-
-            try {
-                DB::table('workouts')->insert(
-                        array(
-                            'user_id' => $user->id,
-                            'name' => $name,
-                            'created_at' => date("Y-m-d")
-                ));
-            } catch (\Exception $e) {
-                return Redirect::route('create-workout')
-                                ->with('danger', 'We weren\'t able to create your workout! Please try again later.');
-            }
-            return Redirect::route('workout', $name)
-                            ->with('success', 'You\'ve created a new workout, now add some exercises.');
-        }
-    }
-
-    public function getCreateWorkout()
-    {
-        return View::make('create-workout')
-                        ->with(array(
-                            'user' => Auth::user()
-        ));
-    }
-
-    public function getWorkout()
-    {
-        return View::make('account.workout')
-                        ->with(array(
-                            'user' => Auth::user()
-        ));
-    }
-
-    public function postWorkout()
-    {
-        $validator = Validator::make(Input::all(), array(
-                    'sets' => 'required',
-                    'reps' => 'required',
-                    'weight' => 'required'
-        ));
-        if ($validator->fails())
-        {
-            // Return to form page with proper error messages
-            return Redirect::route('account-workout')
-                            ->withErrors($validator);
-        }
-        else
-        {
-            // Change the user's password
-            $user = User::find(Auth::user()->id);
-
-            $sets = Input::get('sets');
-            $reps = Input::get('reps');
-            $weight = Input::get('weight');
-
-            try {
-                DB::table('workouts')->insert(
-                        array(
-                            'user_id' => $user->id,
-                            'sets' => $sets,
-                            'reps' => $reps,
-                            'weight' => $weight,
-                            'date' => date("Y-m-d")
-                ));
-            } catch (\Exception $e) {
-                return Redirect::route('home')
-                                ->with('danger', 'We couldn\'t log your workout! Try again later.');
-            }
-            return Redirect::route('home')
-                            ->with('success', 'Your workout has been logged successfully!');
-        }
     }
 
     public function postChangePassword()
