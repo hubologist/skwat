@@ -4,8 +4,7 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <h2>Welcome, {{$user->name}}!</h2>
-        <p>This is your profile page, form here you can track your lift history and log new entries.</p>
+        <h2>{{$user->name}}</h2>
         <p>Last weighed: {{$user->weight}} {{$user->pref_units}}</p>
         <a href="{{URL::route('new-entry')}}" class="btn btn-danger">New entry</a>
     </div>
@@ -34,7 +33,8 @@
             </thead>
             <tbody>
                 @foreach($workouts as $workout)
-                <tr>
+                @if ($workout->weight == $best)
+                <tr class="text-success">
                     <td class="">
                         <p>{{date('jS', strtotime($workout->created_at))}} {{date('M', strtotime($workout->created_at))}}</p>
                     </td>
@@ -44,8 +44,20 @@
                     <td class="">
                         <p>{{$workout->sets}} x {{$workout->reps}}</p>
                     </td>
-
                 </tr>
+                @else
+                <tr class="">
+                    <td class="">
+                        <p>{{date('jS', strtotime($workout->created_at))}} {{date('M', strtotime($workout->created_at))}}</p>
+                    </td>
+                    <td class="">
+                        <p>{{$workout->weight}} {{$user->pref_units}}</p>
+                    </td>
+                    <td class="">
+                        <p>{{$workout->sets}} x {{$workout->reps}}</p>
+                    </td>
+                </tr>
+                @endif
                 @endforeach
             </tbody>
         </table>
