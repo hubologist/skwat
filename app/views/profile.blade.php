@@ -6,6 +6,7 @@
     <div class="panel-body">
         <h2>Welcome, {{$user->name}}!</h2>
         <p>This is your profile page, form here you can track your lift history and log new entries.</p>
+        <p>Last weighed: {{$user->weight}} {{$user->pref_units}}</p>
         <a href="{{URL::route('new-entry')}}" class="btn btn-danger">New entry</a>
     </div>
 </div>
