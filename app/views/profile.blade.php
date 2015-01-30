@@ -12,27 +12,42 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <h3>My lifts</h3>
-        <div class="table-responsive">          
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Weight</th>
-                        <th>Sets x Reps</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($workouts as $workout)
-                    <tr>
-                        <td>{{$workout->weight}} {{$user->pref_units}}</td>
-                        <td>{{$workout->sets}} x {{$workout->reps}}</td>
-                        <td>{{date('jS M', strtotime($workout->created_at))}}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+        <h3>Personal Record: {{$best}} {{$user->pref_units}}!</h3>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h3>History</h3>
+        <table class="table">
+            <thead>
+                <th class="col-md-4">
+                    <p class="text-danger">Date</p>
+                </th>
+                <th class="col-md-4">
+                    <p class="text-danger">Weight</p>
+                </th>
+                <th class="col-md-4">
+                    <p class="text-danger">Sets x Reps</p>
+                </th>
+            </thead>
+            <tbody>
+                @foreach($workouts as $workout)
+                <tr>
+                    <td class="">
+                        <p>{{date('jS', strtotime($workout->created_at))}} {{date('M', strtotime($workout->created_at))}}</p>
+                    </td>
+                    <td class="">
+                        <p>{{$workout->weight}} {{$user->pref_units}}</p>
+                    </td>
+                    <td class="">
+                        <p>{{$workout->sets}} x {{$workout->reps}}</p>
+                    </td>
+
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 @stop
